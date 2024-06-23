@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w2.org/1999/xhtml">
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><html lang="en">
+    <head>
+	<meta name="generator" content="Hugo 0.127.0">
+            <meta charset="utf-8" />
+    <title>terminalcv </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My terminal cv">
+    <meta property="og:title" content="terminalcv" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://localhost:1313/" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href=""/>
+    <link rel="canonical" href="http://localhost:1313/" />    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.42.0/js/jquery.terminal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/less.min.js"></script>
+    <script src="https://unpkg.com/jquery.terminal/js/autocomplete_menu.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.42.0/css/jquery.terminal.min.css" rel="stylesheet"/>
+
+    <style>
+        body {
+            width: 100%;
+            font-size: 18px;
+        }
+    </style>
+    
+
+    </head>
+        <body>
+        
+<script> 
+jQuery(document).ready(function($) {
+    var animation = false;
+
+    var commands = {
+        help: "shows help",
+        less: "Use less as output method",
+        whois: "list basic details",
+        social: "list social networks",
+        work: "list work experience",
+        education: "list education",
+        skills: "list core skills",
+        softskills: "list soft skills",
+        languages: "list spoken languages",
+        projects: "list projects",
+        
+        
+        
+            "more": "more information about me",
+        
+        
+        
+            version: "Current version",
+        
+        
+            exit: "exit the terminal",
+        
+        all: "Show all details",
+    };
+
+    function progressBar(number) {
+        var barLength = Math.round(number / 10);
+        var barFilled = Array(barLength + 1).join("&#9611;");
+        var barBlank= Array(11 - barLength).join("&#9617;");
+
+        return barFilled + barBlank
+    }
+
+    
+    function padKey(key, length) {
+        return key + ' '.repeat(length - key.length);
+    }
+
+    function commandsHelp() {
+        let longestKeyLength = Math.max(...Object.keys(commands).map(key => key.length));
+
+        let helpText = ""
+        for (let key in commands) {
+            if (commands.hasOwnProperty(key)) {
+                helpText += ` ${padKey(key, longestKeyLength)}\t${commands[key]}\n`
+            }
+        }
+        return helpText
+    }
+
+    var help = '\n[[b;white;]usage:]\n' +
+                '\n <command> - execute the command\n' +
+                ' less <command> - use less to display the output\n\n' +
+                '\n[[b;white;]Available commands:]\n' + 
+               commandsHelp();
+
+    var whois = [
+     
+        '[[b;grey;]Name:]\t\t\tStefan Pricope\n' + 
+        '[[b;grey;]Profession:]\t\tSecurity Engineer, Financial Cyber Crime Analyst, Homelab and SelfHosting enthusiast\n' +
+        '[[b;grey;]Location:]\t\tCluj-Napoca, Romania\n' +
+        
+        '[[b;grey;]Email:]\t\t\tstefan@scpricope.com\n' +
+        
+        
+        '[[b;grey;]Homepage:]\t\thttps:\/\/scpricope.com\n' +
+        
+        
+        '\nPassionate about all things related to Cybersecurity and DevOps.\nAlso very much into self-hosting and building home labs.\nSuccessfully deployed SecurityOnion to monitor the Minecraft server player count.\n' +
+        
+        '\r',
+    
+    ];
+
+    function social() { 
+        var hideName = false;
+        let sMap = { 
+             
+                
+                "github": "https:\/\/github.com\/PricopeStefan",
+                
+                "linkedin": "https:\/\/www.linkedin.com\/in\/pricopestefan\/",
+                
+                "hackthebox": "https:\/\/app.hackthebox.com\/profile\/90938",
+                
+                "tryhackme": "https:\/\/tryhackme.com\/p\/sleshwave",
+                
+            
+        };
+
+        
+        socialText = []
+        for (let key in sMap) {
+            if (sMap.hasOwnProperty(key)) {
+                if (hideName) {
+                    socialText.push(sMap[key]);
+                } else { 
+                    let longestKeyLength = Math.max(...Object.keys(sMap).map(key => key.length));
+                    socialText.push(`${padKey(key, longestKeyLength)}\t${sMap[key]}`)
+                };
+            }
+        }
+
+        return socialText
+    }
+
+    var certifications = [
+    
+    ];
+    
+    var work = [
+    
+        
+            '---\n' +
+            '[[b;red;]Security Engineer]\n' +
+            'Banca Transilvania\n' +
+            'Cluj-Napoca, Romania\n' +
+            'June 2022 - Present\n' +
+            '\n' +
+            'Task 1\nTask 2\nTask 3\n' +
+            '\r',
+        
+            '---\n' +
+            '[[b;red;]Security Analyst]\n' +
+            'Banca Transilvania\n' +
+            'Cluj-Napoca, Romania\n' +
+            'April 2021 - June 2022\n' +
+            '\n' +
+            'Analyst Task 1\nAnalyst Task 2\nAnalyst Task 3\n' +
+            '\r',
+        
+            '---\n' +
+            '[[b;red;]DevOps Engineer]\n' +
+            'TSS Yonder\n' +
+            'Iasi, Romania\n' +
+            'October 2020 - April 2021\n' +
+            '\n' +
+            'Yonder Task 1\nYonder Task 2\nYonder Task 3\n' +
+            '\r',
+        
+    
+    ];
+
+    var education = [
+    
+        
+            '---\n' +
+            '[[b;red;]Computer Science @ Babes-Bolyai University]\n' +
+            'October 2017 - July 2020\n' +
+            
+                "Bachelor\u0027s Degree\n" +
+            
+            "\r",
+        
+    
+    ];
+
+    var projects = [
+    
+        
+            '---\n' +
+            '[[b;red;]Home Labbing]\n' +
+            '2021-Present\n' +
+            '\n' +
+            
+            'Multiple OSS projects deployed at home and secured using Cloudflare Tunnels. Working to learn and deploy a Kubernetes cluster. Here is a small list of my currently deployed projects:\n  - Radarr\/Sonarr\n  - Jellyfin\n  - Vaultwarden\n  - Wireguard VPN\n  - Adguard Home\n  - Cloudflare Tunnels (Zero Trust routing)\n\n' +
+            
+            "\r",
+      
+            '---\n' +
+            '[[b;red;]Capture the Flag player @ Hackeri de Sentimente]\n' +
+            '2020-Present\n' +
+            'https:\/\/ctftime.org\/team\/193790\n' +
+            
+            'I enjoy playing CTFs with my friends for fun and (the ocasional) profit.\n' +
+            
+            "\r",
+      
+            '---\n' +
+            '[[b;red;]Steganos]\n' +
+            '2020\n' +
+            'https:\/\/github.com\/PricopeStefan\/Steganos\n' +
+            
+            'Bachelor\u0027s degree project, writing multimedia parsers in C\u002b\u002b and implementing various steganography algorithms in all of them (LSB, custom block hiding, etc.)\n' +
+            
+            "\r",
+      
+    
+    ];
+
+    var skills = [
+    
+        
+            '[[b;red;]Programming:]\n' +
+            progressBar( 90 ) +
+            '90' + '%\n' +
+            
+            'Developed multiple integrations and scripts, Chrome extensions for enriching UX of internal solutions.\n' +
+            
+            '\r',
+        
+            '[[b;red;]Automations:]\n' +
+            progressBar( 90 ) +
+            '90' + '%\n' +
+            
+            'Wrote a lot of SOAR integrations and web scrapers using libraries such as BeautifulSoup, shell scripts for Linux scheduled tasks, etc.\n' +
+            
+            '\r',
+        
+            '[[b;red;]Security:]\n' +
+            progressBar( 101 ) +
+            '101' + '%\n' +
+            
+            'The CV template won\u0027t let me set a question mark as the total percentage known.\n' +
+            
+            '\r',
+        
+    
+    ];
+
+    var softSkills = [
+    
+        
+            '[[b;red;]SoftSkill 1:]\n' +
+            progressBar( 80 ) +
+            '80' + '%\n' + 
+            
+            '\r',
+        
+            '[[b;grey;]SoftSkill 2:]\n' +
+            progressBar( 90 ) +
+            '90' + '%\n' + 
+            
+            'Description\n' +
+            
+            '\r',
+        
+    
+    ];
+  
+    var languages = [
+    
+        
+            '[[b;Red;]Romanian:]\n' +
+            progressBar( 100 )+ 
+            '100' + '%\n' +
+            
+            'Native speaker\n' +
+            
+            '\r',
+        
+            '[[b;Red;]English:]\n' +
+            progressBar( 100 )+ 
+            '100' + '%\n' +
+            
+            'Cambridge C2 certified\n' +
+            
+            '\r',
+        
+            '[[b;Red;]German:]\n' +
+            progressBar( 10 )+ 
+            '10' + '%\n' +
+            
+            'im Gange\n' +
+            
+            '\r',
+        
+    
+    ];
+
+    var misc = [
+         
+        '[[b;red;]more information about me]\n' +
+        '[[;;]TBD - add stuff about tech skills, known programming languages, OSes etc.\n]\n',
+         
+    ];
+
+    var source =  '        _______            \n' +
+                  '       |       |           \n' +
+                  '       |       |           \n' +
+                  '       |_______|_______    \n' +
+                  '               |       |   \n' +
+                  '               |       |   \n' +
+                  ' ______________|_______|   \n' +
+                  '|      |       |       |   \n' +
+                  '|      |       |       |   \n' +
+                  '|______|_______|_______|   \n' +
+                  '[[;red;]May the source be with you]\n' +
+                  '[[;grey;]https://github.com/coolapso/hugo-theme-terminalcv\n';
+
+    var all = [ 
+        whois,
+        social(),
+        work,
+        education,
+        skills,
+        softSkills,
+        languages,
+        projects,
+        certifications,
+        misc,
+        
+        
+        
+        source,
+        
+    ]
+
+    $('body').terminal(function(command, term) {
+
+        var useLess = false;
+        
+
+        function echoArray(array) {
+            if (useLess) {
+                term.less(array);
+            } else {
+                for (i = 0; i < array.length; i += 1) {
+                    term.echo(array[i]);
+                }
+            }
+        }
+        
+        function progress(percent, width) {
+            var size = Math.round(width*percent/100);
+            var left = '', taken = '', i;
+            for (i=size; i--;) {
+                taken += '=';
+            }
+            if (taken.length > 0) {
+                taken = taken.replace(/=$/, '>');
+            }
+            for (i=width-size; i--;) {
+                left += ' ';
+            }
+            return '[' + taken + left + '] ' + percent + '%';
+        }
+
+        function loading () {
+            var i = 0, size = 30;
+            prompt = term.get_prompt();
+            string = progress(0, size);
+            term.set_prompt(progress);
+            animation = true;
+            (function loop() {
+                string = progress(i++, size);
+                term.set_prompt(string);
+                if (i < 100) {
+                    timer = setTimeout(loop, 10);
+                } else {
+                    term.echo(progress(i, size) + ' [[b;green;]OK]').set_prompt(prompt);
+                    animation = false
+                }
+            })();
+        }
+
+        commands = command.split(/[ ]+/);
+        if (commands[0] == 'less') {
+            useLess = true;
+            commands.shift();
+        } 
+                    
+        switch(commands[0]) {
+            case 'whois':
+                
+                echoArray(whois);
+                break;
+            case 'social':
+                
+                echoArray(social());
+                break;
+            case 'work':
+                
+                echoArray(work);
+                break;
+            case 'education':
+                
+                echoArray(education);
+                break;
+            case 'skills':
+                
+                echoArray(skills);
+                break;
+            case 'softskills':
+                
+                echoArray(softSkills);
+                break;
+            case 'languages':
+                
+                echoArray(languages);
+                break;
+            case 'projects':
+                
+                echoArray(projects);
+                break;
+            case 'certifications':
+                
+                term.echo(certifications);
+                break;
+            case 'more':
+                
+                echoArray(misc);
+                break;
+            case 'help':
+            case '?':
+                term.echo(help);
+                break;
+            case 'all':
+                
+                echoArray(all.flat(1));
+                break;
+            
+            case ':(){:|:&};:':
+                term.echo("nice try");
+                break;
+            case 'source':
+                
+                term.echo(source);
+                break;
+            
+            case 'exit':
+                term.echo("terminating ... ")
+                loading();
+                setTimeout(function(){window.location = 'about:blank'}, 2000);
+                break;
+            
+            
+            case 'version':
+                term.echo("2.0.0");
+                break;
+            
+            case '':
+                break;
+            default:
+                term.echo("\nunknown command: " + command + "\n" +
+                          "please type 'help' or '?' for a list of available commands\n");
+        }
+    }, {
+        prompt: '[[;green;]cv@scpricope.com][[;grey;]:~$]' + " ",
+        greetings: "[[b;white;]Welcome to my online resume. Use \u0060all\u0060 to get the entire CV displayed at once.\n\nType \u0027help\u0027 for a list of available commands\n]",
+
+        keydown: function(e, term) {
+            if (animation) {
+                if (e.which == 68 && e.ctrlKey) { 
+                    clearTimeout(timer);
+                    animation = false;
+                    term.echo(string + ' [[b;red;]FAIL]')
+                    .set_prompt(prompt);
+                }
+                return false;
+            }
+        },
+        autocompleteMenu: true,
+        completion: Object.keys(commands)
+        
+    });
+});
+</script>
+
+        </body>
+</html>

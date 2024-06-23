@@ -1,0 +1,180 @@
+## Example Config file
+baseURL: "https://cv.scpricope.com"
+theme: "terminalcv"
+title: "terminalcv"
+
+params:
+  version: '2.0.0'
+  description: "My terminal cv"
+  prompt: "cv@scpricope.com"
+  promptColor: green
+  # promptSimbols: ":~$"
+  promptSimbolsColor: grey
+  # startxLocation: https://example.com
+  # useLess: true
+  exitLocation: 'about:blank'
+  source: true
+  greeting: | 
+    Welcome to my online resume. Use `all` to get the entire CV displayed at once.
+
+    Type 'help' for a list of available commands
+
+
+  whois: 
+    # settings:
+    #   useLess: true
+    details:
+      name: "Stefan Pricope"
+      profession: "Security Engineer, Financial Cyber Crime Analyst, Homelab and SelfHosting enthusiast"
+      location: "Cluj-Napoca, Romania"
+      email: "stefan@scpricope.com"
+      homelink: "https://scpricope.com"
+      description: |
+
+              Passionate about all things related to Cybersecurity and DevOps.
+              Also very much into self-hosting and building home labs.
+              Successfully deployed SecurityOnion to monitor the Minecraft server player count.
+
+  social:
+    # settings:
+    #   useLess: true
+    #   hideName: true
+    details:
+    - name: "github"
+      url: "https://github.com/PricopeStefan"
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/pricopestefan/"
+    - name: "hackthebox"
+      url: "https://app.hackthebox.com/profile/90938"
+    - name: "tryhackme"
+      url: "https://tryhackme.com/p/sleshwave"
+
+  work:
+    # settings:
+    #   useLess: true
+    details:
+    - jobTitle: Security Engineer
+      color: red
+      company: Banca Transilvania
+      location: Cluj-Napoca, Romania
+      date: June 2022 - Present
+      description: |
+        Task 1
+        Task 2
+        Task 3
+
+    - jobTitle: Security Analyst
+      color: red
+      company: Banca Transilvania
+      location: Cluj-Napoca, Romania
+      date: April 2021 - June 2022
+      description: |
+        Analyst Task 1
+        Analyst Task 2
+        Analyst Task 3
+
+    - jobTitle: DevOps Engineer
+      color: red
+      company: TSS Yonder
+      location: Iasi, Romania
+      date: October 2020 - April 2021
+      description: |
+        Yonder Task 1
+        Yonder Task 2
+        Yonder Task 3
+
+  education:
+    details:
+    - courseName: Computer Science @ Babes-Bolyai University
+      color: red
+      date: October 2017 - July 2020
+      description: Bachelor's Degree
+
+  skills:
+    details:
+    - name: Programming
+      color: red
+      percentage: 90
+      description: Developed multiple integrations and scripts, Chrome extensions for enriching UX of internal solutions.
+
+    - name: Automations
+      color: red
+      percentage: 90
+      description: Wrote a lot of SOAR integrations and web scrapers using libraries such as BeautifulSoup, shell scripts for Linux scheduled tasks, etc.
+
+    - name: Security
+      color: red
+      percentage: 101
+      description: The CV template won't let me set a question mark as the total percentage known.
+
+
+  softskills:
+    # settings:
+    #   useLess: true
+    details:
+    - name: SoftSkill 1
+      color: red
+      percentage: 80
+      #description:
+
+    - name:  SoftSkill 2
+      #color: 
+      percentage: 90
+      description: Description
+
+  languages:
+    # settings:
+    #   useLess: true
+    details:
+    - name: Romanian
+      color: Red
+      percentage: 100
+      description: Native speaker
+
+    - name: English
+      color: Red
+      percentage: 100
+      description: Cambridge C2 certified
+
+    - name: German
+      color: Red
+      percentage: 10
+      description: im Gange
+
+
+  projects:
+    # settings:
+    #   useLess: true
+    details:
+    - title: Home Labbing
+      color: red
+      date: 2021-Present
+      description: |
+        Multiple OSS projects deployed at home and secured using Cloudflare Tunnels. Working to learn and deploy a Kubernetes cluster. Here is a small list of my currently deployed projects:
+          - Radarr/Sonarr
+          - Jellyfin
+          - Vaultwarden
+          - Wireguard VPN
+          - Adguard Home
+          - Cloudflare Tunnels (Zero Trust routing)
+
+    - title: Capture the Flag player @ Hackeri de Sentimente
+      color: red
+      date: 2020-Present
+      link: https://ctftime.org/team/193790
+      description: I enjoy playing CTFs with my friends for fun and (the ocasional) profit.
+
+    - title: Steganos
+      color: red
+      date: 2020
+      link: https://github.com/PricopeStefan/Steganos
+      description: Bachelor's degree project, writing multimedia parsers in C++ and implementing various steganography algorithms in all of them (LSB, custom block hiding, etc.)
+
+  misc: 
+    # settings:
+    #   useLess: true
+    commandName: more
+    title: "more information about me"
+    titleColor: red
+    content: |
+      TBD - add stuff about tech skills, known programming languages, OSes etc.
